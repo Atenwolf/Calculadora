@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             0.0 // Maneja errores si el contenido no es un número
         }
 
-        // Guarda el valor de num2 antes de borrar el TextView
+        // Guarda el valor de num2 antes de borrar el txt
         numero1 = num2
 
         tv_num2.text = "0" // Borra el TextView para ingresar un nuevo número
@@ -58,8 +58,8 @@ class MainActivity : AppCompatActivity() {
             R.id.btnSLASH -> operador = "/"
         }
 
-        val tv_num1: TextView = findViewById(R.id.tv_num1) // Accede al TextView superior para mostrar la operación
-        tv_num1.text = "$num2_text $operador" // Actualiza el TextView con la operación realizada
+        val tv_num1: TextView = findViewById(R.id.tv_num1) // Accede al txt superior para mostrar la operación
+        tv_num1.text = "$num2_text $operador" // Actualiza el txt con la operación realizada
         oper = when (view.id) {
             R.id.btnMAS -> 1
             R.id.btnMENOS -> 2
@@ -69,29 +69,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Función para manejar el botón de igual (=)
+    // Función para  igual =
     fun igual(view: View) {
-        val tv_num2: TextView = findViewById(R.id.tv_num2) // Accede al TextView donde se muestra el número
-        val num2_text: String = tv_num2.text.toString() // Obtiene el contenido actual del TextView
+        val tv_num2: TextView = findViewById(R.id.tv_num2) // Accede al txt donde se muestra el número
+        val num2_text: String = tv_num2.text.toString() // Obtiene el contenido actual del txt
         val num2 = try {
             num2_text.toDouble() // Convierte el contenido en un número decimal
         } catch (e: NumberFormatException) {
-            0.0 // Maneja errores si el contenido no es un número
+            0.0 // Maneja errores si el contenido no es un numero
         }
 
-        val tv_num1: TextView = findViewById(R.id.tv_num1) // Accede al TextView superior para mostrar la operación
+        val tv_num1: TextView = findViewById(R.id.tv_num1) // Accede al txt superior para mostrar la operación
         val operador = tv_num1.text.toString().takeLast(1).trim() // Obtiene el último carácter, que es el operador
 
-        // Realiza la operación según el tipo de operación almacenado en 'oper'
+        // Realizar  operación segun el tipo de operación almacenado en 'oper'
         val resultado: Double = when (oper) {
             1 -> numero1 + num2 // Suma
             2 -> numero1 - num2 // Resta
-            3 -> numero1 * num2 // Multiplicación
-            4 -> if (num2 != 0.0) numero1 / num2 else 0.0 // División con manejo de división por cero
+            3 -> numero1 * num2 // Multiplicacion
+            4 -> if (num2 != 0.0) numero1 / num2 else 0.0 // Division con manejo de division por cero
             else -> 0.0
         }
 
-        tv_num2.text = resultado.toString() // Muestra el resultado en el TextView inferior
+        tv_num2.text = resultado.toString() // Muestra el resultado en el txt inferior
         tv_num1.text = "" // Borra la operación mostrada
         numero1 = resultado // Actualiza el valor de numero1 con el resultado
         oper = 0 // Reinicia el tipo de operación
