@@ -7,13 +7,20 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     // Declaración de variables para guardar información y controlar las operaciones
-    private var oper: Int = 0 // Variable para rastrear el tipo de operación (suma, resta, etc.)
+    private var oper: Int = 0 // Variable para saber el tipo de operación (suma, resta, mult, div)
     private var numero1: Double = 0.0 // Variable para almacenar el primer número en la operación
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) // Configura el diseño de la actividad
     }
+    fun limpiar(view: View) {// Función para limpiar los txt
+        val tv_num1: TextView = findViewById(R.id.tv_num1)
+        val tv_num2: TextView = findViewById(R.id.tv_num2)
+        tv_num1.text = "0"
+        tv_num2.text = "0"
+    }
+
 
     // Función para manejar los botones numéricos y el punto decimal
     fun presionar(view: View) {
@@ -54,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         val tv_num1: TextView = findViewById(R.id.tv_num1) // Accede al TextView superior para mostrar la operación
         tv_num1.text = "$num2_text $operador" // Actualiza el TextView con la operación realizada
         oper = when (view.id) {
-            R.id.btnMAS -> 1 // Asigna un valor para rastrear el tipo de operación
+            R.id.btnMAS -> 1
             R.id.btnMENOS -> 2
             R.id.btnMULT -> 3
             R.id.btnSLASH -> 4
